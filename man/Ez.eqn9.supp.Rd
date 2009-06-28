@@ -71,9 +71,14 @@ Ez.eqn9.supp.vector(x, theta, d, D1, D2, H1, H2, phi)
 
 \examples{
 data(toys)
-Ez.eqn9.supp(x=x.toy,  theta=theta.toy,  d=d.toy, D1=D1.toy,  D2=D2.toy, H1=H1.toy,H2=H2.toy, phi=phi.toy)
-Ez.eqn9.supp(x=D2.toy, theta=t.vec.toy,  d=d.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy,H2=H2.toy, phi=phi.toy)
-Ez.eqn9.supp(x=x.vec,  theta=t.vec.toy,  d=d.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy,H2=H2.toy, phi=phi.toy)
+Ez.eqn9.supp(x=x.toy,  theta=theta.toy, d=d.toy, D1=D1.toy,
+         D2=D2.toy, H1=H1.toy,H2=H2.toy, phi=phi.toy)
+
+Ez.eqn9.supp(x=D2.toy, theta=t.vec.toy,  d=d.toy, D1=D1.toy,
+         D2=D2.toy, H1=H1.toy,H2=H2.toy, phi=phi.toy)
+
+Ez.eqn9.supp(x=x.vec,  theta=t.vec.toy,  d=d.toy, D1=D1.toy,
+         D2=D2.toy, H1=H1.toy,H2=H2.toy, phi=phi.toy)
 
 }
 \keyword{array}

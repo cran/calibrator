@@ -34,8 +34,14 @@ H.fun(theta, D1, D2, H1, H2, phi)
 \author{Robin K. S. Hankin}
 \examples{
 data(toys)
-H.fun(theta=theta.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy, phi=phi.toy)
-H.fun(theta=theta.toy, D1=D1.toy[1,,drop=FALSE], D2=D2.toy, H1=H1.toy, H2=H2.toy, phi=phi.toy)
-H.fun(theta=theta.toy, D1=D1.toy[1,,drop=FALSE], D2=D2.toy[1,,drop=FALSE], H1=H1.toy, H2=H2.toy, phi=phi.toy)
+H.fun(theta=theta.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy,
+       H2=H2.toy, phi=phi.toy)
+
+H.fun(theta=theta.toy, D1=D1.toy[1,,drop=FALSE], D2=D2.toy,
+       H1=H1.toy, H2=H2.toy, phi=phi.toy)
+
+H.fun(theta=theta.toy, D1=D1.toy[1,,drop=FALSE],
+       D2=D2.toy[1,,drop=FALSE],
+       H1=H1.toy, H2=H2.toy, phi=phi.toy)
 }
 \keyword{array}

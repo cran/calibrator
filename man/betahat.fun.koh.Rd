@@ -63,13 +63,16 @@ betahat.fun.koh.vector(D1, D2, H1, H2, theta, d, phi)
 \author{Robin K. S. Hankin}
 \examples{
 data(toys)
-betahat.fun.koh(theta=theta.toy, d=d.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy, phi=phi.toy)
+betahat.fun.koh(theta=theta.toy, d=d.toy, D1=D1.toy, D2=D2.toy,
+      H1=H1.toy, H2=H2.toy, phi=phi.toy)
 
-betahat.fun.koh.vector(theta=theta.toy, d=d.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy, phi=phi.toy)
+betahat.fun.koh.vector(theta=theta.toy, d=d.toy, D1=D1.toy,
+      D2=D2.toy, H1=H1.toy, H2=H2.toy, phi=phi.toy)
 ## should be identical
 
 jj.theta <- rbind(theta.toy,theta.toy+1,theta.toy+2,theta.toy*0)
-betahat.fun.koh(theta=jj.theta, d=d.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy, phi=phi.toy)
+betahat.fun.koh(theta=jj.theta, d=d.toy, D1=D1.toy, D2=D2.toy,
+     H1=H1.toy, H2=H2.toy, phi=phi.toy)
 
 ## Now try with true hyperparameters:
 phi.true <- phi.true.toy(phi=phi.toy)
@@ -87,7 +90,8 @@ d.toy <- jj$d.toy
 ## close to the real values (which omniscient beings can extract using
 ## reality() and computer.model()):
 
-betahat.fun.koh(theta=jj.theta, d=d.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy, phi=phi.true)
+betahat.fun.koh(theta=jj.theta, d=d.toy, D1=D1.toy, D2=D2.toy,
+       H1=H1.toy, H2=H2.toy, phi=phi.true)
 
 ## [
 ##  that is, compare the last column of the above with

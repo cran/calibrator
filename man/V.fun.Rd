@@ -79,7 +79,8 @@ data(toys)
 
 
 ## Now note that V.fun() changes with the PRIOR used for theta:
-phi.different.theta <-  phi.change(old.phi=phi.toy,theta.apriori.mean=c(100,100,100),phi.fun=phi.fun.toy)
+phi.different.theta <-  phi.change(old.phi=phi.toy,
+     theta.apriori.mean=c(100,100,100),phi.fun=phi.fun.toy)
 V.fun(D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy, 
   extractor=extractor.toy, 
   Edash.theta=Edash.theta.toy,

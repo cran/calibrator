@@ -12,7 +12,8 @@
   case the climate.
 }
 \usage{
-model.inadequacy(X, set.seed.to.zero=TRUE, draw.from.prior=FALSE, export.true.hyperparameters=FALSE,phi=NULL)
+model.inadequacy(X, set.seed.to.zero=TRUE, draw.from.prior=FALSE,
+     export.true.hyperparameters=FALSE,phi=NULL)
 computer.model(X, params=NULL, set.seed.to.zero=TRUE,
 draw.from.prior=FALSE, export.true.hyperparameters=FALSE,phi=NULL)
 phi.true.toy(phi)

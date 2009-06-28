@@ -10,13 +10,18 @@ the hyperparameters and \code{stage3()} finds the optimal values for
 the three parameters.
 }
 \usage{
-stage1(D1, y, H1,  maxit,  trace=100, method="Nelder-Mead", directory = ".", do.filewrite=FALSE, do.print=TRUE, phi.fun, lognormally.distributed=FALSE, include.prior=TRUE, phi)
-stage2(D1, D2, H1, H2, y, z, maxit, trace=100, method = "Nelder-Mead", directory =
-".", do.filewrite=FALSE, do.print=TRUE,  extractor, phi.fun, E.theta,
-Edash.theta, isotropic=FALSE, lognormally.distributed = FALSE,
-include.prior = TRUE, use.standin = FALSE, rho.eq.1 = TRUE, phi) 
-stage3(D1, D2, H1, H2, d, maxit, trace=100, method="Nelder-Mead", directory = ".",
-do.filewrite=FALSE, do.print=TRUE, include.prior = TRUE, lognormally.distributed=FALSE, theta.start=NULL, phi) 
+stage1(D1, y, H1,  maxit,  trace=100, method="Nelder-Mead",
+      directory = ".", do.filewrite=FALSE, do.print=TRUE,
+      phi.fun, lognormally.distributed=FALSE, include.prior=TRUE, phi)
+stage2(D1, D2, H1, H2, y, z, maxit, trace=100, method = "Nelder-Mead",
+      directory = ".", do.filewrite=FALSE, do.print=TRUE,  extractor,
+      phi.fun, E.theta, Edash.theta, isotropic=FALSE,
+      lognormally.distributed = FALSE, include.prior = TRUE,
+      use.standin = FALSE, rho.eq.1 = TRUE, phi) 
+stage3(D1, D2, H1, H2, d, maxit, trace=100, method="Nelder-Mead",
+      directory = ".", do.filewrite=FALSE, do.print=TRUE,
+      include.prior = TRUE, lognormally.distributed=FALSE,
+      theta.start=NULL, phi) 
 }
 \arguments{
   \item{maxit}{Maximum number of iterations as passed to \code{optim()}}

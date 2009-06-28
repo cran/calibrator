@@ -67,11 +67,13 @@ d=d.toy, phi=phi.toy)
 phi.true <- phi.true.toy(phi=phi.toy)
 jj <- create.new.toy.datasets(D1.toy , D2.toy)
 d.toy <- jj$d.toy
-p.eqn8.supp(theta=theta.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy, d=d.toy, phi=phi.true)
+p.eqn8.supp(theta=theta.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy,
+     H2=H2.toy, d=d.toy, phi=phi.true)
 
 
 ## Now try p.eqn8.supp() with a vector of possible thetas:
-p.eqn8.supp(theta=sample.theta(n=11,phi=phi.true), D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy,  d=d.toy, phi=phi.true)
+p.eqn8.supp(theta=sample.theta(n=11,phi=phi.true), D1=D1.toy,
+     D2=D2.toy, H1=H1.toy, H2=H2.toy,  d=d.toy, phi=phi.true)
 
 }
 \keyword{array}
