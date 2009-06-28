@@ -75,8 +75,7 @@ phi.fun.toy(rho = 1,
             psi1.apriori = jj.psi1.apriori,
             psi2 = jj.psi2,
             psi2.apriori = jj.psi2.apriori,
-            theta.apriori = jj.theta.apriori,
-            power = 2)
+            theta.apriori = jj.theta.apriori)
 
 
 "V.toy" <- 

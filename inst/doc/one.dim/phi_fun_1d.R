@@ -4,7 +4,7 @@
 
  phi.fun.1d <- 
 function (rho, lambda, psi1, psi1.apriori, psi2, psi2.apriori, 
-    theta.apriori, power) 
+    theta.apriori) 
 {
 
       pdm.maker.psi1 <- function(psi1) {
@@ -51,7 +51,7 @@ function (rho, lambda, psi1, psi1.apriori, psi2, psi2.apriori,
     jj.A.lower <- t(jj.A.upper)
     list(rho = rho, lambda = lambda, psi1 = psi1, psi1.apriori = psi1.apriori, 
         psi2 = psi2, psi2.apriori = psi2.apriori, theta.apriori = theta.apriori, 
-        power = power, omega_x = jj.omega_x, omega_t = jj.omega_t, 
+        omega_x = jj.omega_x, omega_t = jj.omega_t, 
         omegastar_x = jj.omegastar_x, sigma1squared = jj.sigma1squared, 
         sigma2squared = jj.sigma2squared, omega_x.upper = jj.omega_x.upper, 
         omega_x.lower = jj.omega_x.lower, omega_t.upper = jj.omega_t.upper, 

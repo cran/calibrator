@@ -6,7 +6,7 @@ function (D1, D2, theta, phi)
     sigma1squared <- phi$sigma1squared
     pos.def.matrix <- blockdiag(omega_x, omega_t)
     corr.matrix(xold = D1, yold = D2.fun(D2 = D2, theta = theta), 
-        pos.def.matrix = pos.def.matrix, power = phi$power) * 
+        pos.def.matrix = pos.def.matrix)*
         sigma1squared
 }
 "D1.fun" <-
@@ -306,8 +306,8 @@ function (D1, D2, H1, H2, extractor, E.theta, Edash.theta, give.answers = FALSE,
 function (D1, other = NULL, phi) 
 {
     return(phi$sigma1squared * t(corr.matrix(xold = D1, yold = other, 
-        pos.def.matrix = blockdiag(phi$omega_x, phi$omega_t), 
-        power = phi$power)))
+        pos.def.matrix = blockdiag(phi$omega_x, phi$omega_t))))
+
 }
 "V2" <-
 function (x, other = NULL, phi) 
@@ -316,7 +316,7 @@ function (x, other = NULL, phi)
         x <- as.data.frame(t(x))
     }
     return(t(phi$sigma2squared * corr.matrix(xold = x, yold = other, 
-        pos.def.matrix = phi$omegastar_x, power = phi$power)))
+        pos.def.matrix = phi$omegastar_x)))
 }
 "Vd" <-
 function (D1, D2, theta, phi) 
@@ -794,7 +794,7 @@ function (phi.fun, old.phi = NULL, rho = NULL, lambda = NULL,
     psi1 = NULL, psi1.apriori = NULL, psi1.apriori.mean = NULL, 
     psi1.apriori.sigma = NULL, psi2 = NULL, psi2.apriori = NULL, 
     psi2.apriori.mean = NULL, psi2.apriori.sigma = NULL, theta.apriori = NULL, 
-    theta.apriori.mean = NULL, theta.apriori.sigma = NULL, power = NULL) 
+    theta.apriori.mean = NULL, theta.apriori.sigma = NULL) 
 {
     if (is.null(rho)) {
         rho <- old.phi$rho
@@ -872,16 +872,12 @@ function (phi.fun, old.phi = NULL, rho = NULL, lambda = NULL,
             }
         }
     }
-    if (is.null(power)) {
-        power <- old.phi$power
-    }
     return(phi.fun(rho = rho, lambda = lambda, psi1 = psi1, psi1.apriori = psi1.apriori, 
-        psi2 = psi2, psi2.apriori = psi2.apriori, theta.apriori = theta.apriori, 
-        power = power))
+        psi2 = psi2, psi2.apriori = psi2.apriori, theta.apriori = theta.apriori))
 }
 "phi.fun.toy" <-
 function (rho, lambda, psi1, psi1.apriori, psi2, psi2.apriori, 
-    theta.apriori, power) 
+    theta.apriori) 
 {
     "pdm.maker.psi1" <- function(psi1) {
         jj.omega_x <- diag(psi1[1:2])
@@ -924,7 +920,7 @@ function (rho, lambda, psi1, psi1.apriori, psi2, psi2.apriori,
     jj.A.lower <- t(jj.A.upper)
     list(rho = rho, lambda = lambda, psi1 = psi1, psi1.apriori = psi1.apriori, 
         psi2 = psi2, psi2.apriori = psi2.apriori, theta.apriori = theta.apriori, 
-        power = power, omega_x = jj.omega_x, omega_t = jj.omega_t, 
+        omega_x = jj.omega_x, omega_t = jj.omega_t, 
         omegastar_x = jj.omegastar_x, sigma1squared = jj.sigma1squared, 
         sigma2squared = jj.sigma2squared, omega_x.upper = jj.omega_x.upper, 
         omega_x.lower = jj.omega_x.lower, omega_t.upper = jj.omega_t.upper, 
@@ -1023,9 +1019,9 @@ function (X, set.seed.to.zero = TRUE, draw.from.prior=FALSE,
       out <- as.vector(rmvnorm(    n = 1,
                                 mean = as.vector(H2.toy(X) %*% REAL.BETA2),
                                sigma = REAL.SIGMA2SQUARED * as.matrix(corr.matrix(X, 
-                                 scales = REAL.ROUGHNESS, power = 2))
+                                 scales = REAL.ROUGHNESS)
                                )
-                       )
+                       ))
       return(out)
 }
 "sample.theta" <-
@@ -1390,15 +1386,10 @@ low on my list of priorities.  Sorry about this.")
   if(multi.dimensional){ # multi dimensional case
 
     
-    numerator <-
-      adapt(length(phi$theta.apriori$mean),
-            lower = lower.theta, upper = upper.theta,
-            functn = integrand.numerator, ...)
-    denominator <-
-      adapt(length(phi$theta.apriori$mean),
-          lower = lower.theta, upper = upper.theta,
-            functn = integrand.denominator, ...)
+    numerator   <- adaptIntegrate(f=integrand.numerator  , lowerLimit = lower.theta, upperLimit = upper.theta, ...)
+    denominator <- adaptIntegrate(f=integrand.denominator, lowerLimit = lower.theta, upperLimit = upper.theta, ...)
 
+    out <- numerator$integral/denominator$integral
     
   } else { # one dimensional case
     integrand.numerator.vectorized <- function(theta.vec){
@@ -1407,7 +1398,7 @@ low on my list of priorities.  Sorry about this.")
     numerator <-
       integrate(f=integrand.numerator.vectorized,
                 lower=lower.theta, upper=upper.theta, ...)
-  
+    
     
     integrand.denominator.vectorized <- function(theta.vec){
       sapply(theta.vec,integrand.denominator)
@@ -1415,9 +1406,11 @@ low on my list of priorities.  Sorry about this.")
     denominator <-
       integrate(f=integrand.denominator.vectorized,
                 lower=lower.theta, upper=upper.theta, ...)
+    
+    out <- numerator$value/denominator$value
   }
   
-  out <- numerator$value/denominator$value
+
   if(give.info){
     return(list(answer=out, numerator=numerator, denominator=denominator))
   } else {

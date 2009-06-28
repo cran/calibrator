@@ -37,9 +37,8 @@ phi.1d <-
      psi2          = jj.psi2,
      psi1.apriori  = list(mean=jj.mean1,sigma=jj.sigma1),
      psi2.apriori  = list(mean=jj.mean2,sigma=jj.sigma2),
-     theta.apriori = list(mean=jj.mean.th,sigma=jj.sigma.th),
-     power=2)
-
+     theta.apriori = list(mean=jj.mean.th,sigma=jj.sigma.th)
+                )
 
 phi.1d2 <- phi.change(old.phi=phi.1d, phi.fun=phi.fun.1d, rho=3)
 

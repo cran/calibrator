@@ -409,7 +409,7 @@ Notes
 <<phi.fun.int, echo=FALSE>>=
  phi.fun.int <- 
 function (rho, lambda, psi1, psi1.apriori, psi2, psi2.apriori, 
-    theta.apriori, power) 
+    theta.apriori) 
 {
     # CHANGES START
     pdm.maker.psi1 <- function(psi1) {
@@ -454,7 +454,7 @@ function (rho, lambda, psi1, psi1.apriori, psi2, psi2.apriori,
     jj.A.lower <- t(jj.A.upper)
     list(rho = rho, lambda = lambda, psi1 = psi1, psi1.apriori = psi1.apriori, 
         psi2 = psi2, psi2.apriori = psi2.apriori, theta.apriori = theta.apriori, 
-        power = power, omega_x = jj.omega_x, omega_t = jj.omega_t, 
+        omega_x = jj.omega_x, omega_t = jj.omega_t, 
         omegastar_x = jj.omegastar_x, sigma1squared = jj.sigma1squared, 
         sigma2squared = jj.sigma2squared, omega_x.upper = jj.omega_x.upper, 
         omega_x.lower = jj.omega_x.lower, omega_t.upper = jj.omega_t.upper, 
@@ -505,8 +505,9 @@ phi.int <-
      psi2          = jj.psi2,
      psi1.apriori  = list(mean=jj.mean1,sigma=jj.sigma1),
      psi2.apriori  = list(mean=jj.mean2,sigma=jj.sigma2),
-     theta.apriori = list(mean=jj.mean.th,sigma=jj.sigma.th),
-     power=2)
+     theta.apriori = list(mean=jj.mean.th,sigma=jj.sigma.th)
+                 )
+
 @ 
 
 Notes:
@@ -516,7 +517,7 @@ hyperparameter object, here \code{phi.int}.
 \item you only have to call this function, with all its complicated
 arguments, once.  Save the result in, say, \code{jj} and then use
 function \code{phi.change()}, which is generic, and much simpler to use.
-\item The value for rho and lambda and power are just scalars 
+\item The value for rho and lambda are just scalars 
 \item \code{psi1} and \code{psi2} are structures, or named vectors
 (it's always good practice to include names).  Vector psi1 has 5
 elements: two for x and y, two for the parameters A and B, and one for
@@ -1112,13 +1113,8 @@ more computing power than is available in the entire universe.
 
 \ldots but, it {\em is} implemented.
 
-Actually, it's a little difficult because the \pkg{adapt} package is
-no longer carried on CRAN, because of licensing issues.  Function
-\code{EK.eqn10.supp()} includes a redefinition of \code{adapt()},
-which gives an error.  If you want to use \code{EK.eqn10.supp()}, then
-load the \pkg{adapt} package, then comment out the redefinition and
-everything should work.  I am trying to write a multidimensional
-integrator but this is low on my list of priorities.
+The integration is carried out by function \code{adaptIntegrate()} of
+the \code{cubature} package.
 
 The first step is to read \code{help(EK.eqn10.supp)}, which gives a
 working example.  

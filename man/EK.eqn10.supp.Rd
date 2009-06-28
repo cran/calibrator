@@ -31,11 +31,11 @@ EK.eqn10.supp(X.dist, D1, D2, H1, H2, d, hbar.fun,
     an example}
   \item{give.info}{Boolean, with default \code{FALSE} meaning to return
     just the answer and \code{TRUE} to return the answer along with all
-    output from both integrations as performed by \code{adapt()}}
+    output from both integrations as performed by \code{adaptIntegrate()}}
   \item{phi}{Hyperparameters}
   \item{...}{Extra arguments passed to the integration
     function.  If multidimensional (ie \code{length(theta)>1}), then the
-    arguments are passed to \code{adapt()}; if one dimensional, they
+    arguments are passed to \code{adaptIntegrate()}; if one dimensional, they
     are passed to \code{integrate()}}
 }
 \details{
@@ -45,11 +45,8 @@ section 4.2 of the supplement.
 Equation 10 integrates over the prior distribution of \code{theta}.  If
 \code{theta} is a vector, multidimensional integration is necessary.
 
-In the case of multidimensional integration, the eponymous
-\code{adapt()} is used.  Note that, as of version 1.0-3, this is
-restricted to fewer than 20 dimensions---which is not checked for.
-Evaluation is slow, as multidimensional integration is hard (spot the
-understatement).
+In the case of multidimensional integration, function
+\code{adaptIntegrate()} is used.
 
 In the case of one dimensional integration---theta being a
 scalar---function \code{integrate()} of the stats package is used.
