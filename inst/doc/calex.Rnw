@@ -17,7 +17,7 @@
 %% for pretty printing and a nice hypersummary also set:
 \Plainauthor{Robin K. S. Hankin}
 \Plaintitle{Creating a simple calibrator case study from scratch: a cookbook}
-\Shorttitle{An calibrator cookbook}
+\Shorttitle{A calibrator cookbook}
 
 %% an abstract and keywords
 \Abstract{

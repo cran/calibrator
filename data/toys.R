@@ -1,5 +1,5 @@
-require(calibrator, quietly=TRUE, save=FALSE)
-require(emulator, quietly=TRUE, save=FALSE)
+require(calibrator, quietly=TRUE)
+require(emulator, quietly=TRUE)
 
 "D1.toy" <- 
 structure(c(
