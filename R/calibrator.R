@@ -1297,6 +1297,25 @@ function (D1, extractor, x.i, x.j, test.for.symmetry = FALSE,
 
 "EK.eqn10.supp" <- function(X.dist, D1, D2, H1, H2, d, hbar.fun,
   lower.theta, upper.theta, extractor, give.info=FALSE, include.prior=FALSE, phi, ...){
+
+
+  if(!exists("adapt")){
+    adapt <- function(...){stop("not the original adapt")}
+    stop("the adapt package is no longer available on CRAN: so
+          the adapt() function, which is needed for calculate_B(),
+          is not available either.
+
+  You may be able to install the adapt package notwithstanding its
+  availability on CRAN or is license.  If you are happy with this (I
+  am), everything should work.
+
+I am working on providing a replacement for adapt(), but this  is
+low on my list of priorities.  Sorry about this.")
+
+  }      
+
+
+  
   scalar1 <-
     phi$sigma1squared/sqrt(det(diag(nrow=nrow(phi$omega_x)) +
                                        2*X.dist$var %*% phi$omega_x))
@@ -1370,6 +1389,7 @@ function (D1, extractor, x.i, x.j, test.for.symmetry = FALSE,
   multi.dimensional <- length(phi$theta.apriori$mean)>1
   if(multi.dimensional){ # multi dimensional case
 
+    
     numerator <-
       adapt(length(phi$theta.apriori$mean),
             lower = lower.theta, upper = upper.theta,

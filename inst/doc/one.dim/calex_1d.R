@@ -17,10 +17,10 @@ library(calibrator)
 library(emulator)
 
 # First, how many code observations:
-n1 <- 40
+n1 <- 21
 
 # and how many field observations:
-n2 <- 90
+n2 <- 30
 
 
 

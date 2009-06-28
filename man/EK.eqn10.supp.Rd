@@ -78,12 +78,27 @@ the hyperparameters
 }
 \author{Robin K. S. Hankin}
 \note{
-  The function was not reviewed by the Journal of Statistical Software
+  The function was not reviewed by the Journal of Statistical Software.
+
+
+
+  The adapt package is no longer available on CRAN: so the
+  \code{adapt()} function is not available either.
+
+  You may be able to install the adapt package notwithstanding its
+  availability on CRAN or is license.  If you are happy with this (I
+  am), install the adapt package and everything should work.
+
+  I am working on providing a replacement for adapt(), but this is low
+  on my list of priorities.  Sorry about this.
+  
 }
 \examples{
 1+1
 \dontrun{
-# Not run because it takes R CMD check too long.
+# Not run because: (i) it takes R CMD check too long, and (ii) a working
+# version needs adapt(), which is not currently available
+
 data(toys)
 EK.eqn10.supp(X.dist=X.dist.toy, D1=D1.toy, D2=D2.toy, H1=H1.toy, H2=H2.toy, d=d.toy, hbar.fun=hbar.fun.toy, lower.theta=c(-3,-3,-3), upper.theta=c(3,3,3),extractor=extractor.toy, phi=phi.toy)
 }

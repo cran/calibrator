@@ -1112,6 +1112,14 @@ more computing power than is available in the entire universe.
 
 \ldots but, it {\em is} implemented.
 
+Actually, it's a little difficult because the \pkg{adapt} package is
+no longer carried on CRAN, because of licensing issues.  Function
+\code{EK.eqn10.supp()} includes a redefinition of \code{adapt()},
+which gives an error.  If you want to use \code{EK.eqn10.supp()}, then
+load the \pkg{adapt} package, then comment out the redefinition and
+everything should work.  I am trying to write a multidimensional
+integrator but this is low on my list of priorities.
+
 The first step is to read \code{help(EK.eqn10.supp)}, which gives a
 working example.  
 
