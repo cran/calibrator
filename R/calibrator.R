@@ -9,6 +9,7 @@ function (D1, D2, theta, phi)
         pos.def.matrix = pos.def.matrix)*
         sigma1squared
 }
+
 "D1.fun" <-
 function (x.star, t.vec) 
 {
@@ -40,6 +41,7 @@ function (x.star, t.vec)
     }
     return(D1)
 }
+
 "D2.fun" <-
 function (D2, theta) 
 {
@@ -53,6 +55,7 @@ function (D2, theta)
     }
     return(jj)
 }
+
 "E.theta.toy" <-
 function (D2 = NULL, H1 = NULL, x1 = NULL, x2 = NULL, phi, give.mean = TRUE) 
 {
@@ -66,6 +69,7 @@ function (D2 = NULL, H1 = NULL, x1 = NULL, x2 = NULL, phi, give.mean = TRUE)
         return(out)
     }
 }
+
 "Edash.theta.toy" <-
 function (x, t.vec, k, H1, fast.but.opaque = FALSE, a = NULL, 
     b = NULL, phi = NULL) 
@@ -113,6 +117,7 @@ function (z, D1, H1, D2, H2, extractor, beta2, y, E.theta, phi)
         phi = phi), y - H1(D1) %*% beta1hat))
     return(bit1 + bit2 + bit3)
 }
+
 "Ez.eqn9.supp" <-
 function (x, theta, d, D1, D2, H1, H2, phi) 
 {
@@ -134,7 +139,7 @@ function(x, theta, H1, H2, phi) {
     rho <- phi$rho
     t(cbind(rho * H1(D1.fun(x.star = x, t.vec = theta)), 
             H2(x)))
-  }
+}
 
 "Ez.eqn9.supp.vector" <-
 function (x, theta, d, D1, D2, H1, H2, phi) 
@@ -188,7 +193,6 @@ function (x, xdash=NULL, theta, d, D1, D2, H1, H2, phi)
   return(bit1 + bit2 - bit3 + bit4) 
 }
 
-
 "H.fun" <-
 function (theta, D1, D2, H1, H2, phi) 
 {
@@ -202,6 +206,7 @@ function (theta, D1, D2, H1, H2, phi)
     colnames(out)[(ncol(top.left) + 1):ncol(out)] <- colnames(low.right)
     return(out)
 }
+
 "H1.toy" <-
 function (D1) 
 {
@@ -212,6 +217,7 @@ function (D1)
     colnames(out)[1] <- "h1.const"
     return(out)
 }
+
 "H2.toy" <-
 function (D2) 
 {
@@ -222,6 +228,7 @@ function (D2)
     colnames(out) <- names(h2.toy(D2[1,,drop=TRUE]))
     return(out)
 }
+
 "V.fun" <-
 function (D1, D2, H1, H2, extractor, E.theta, Edash.theta, give.answers = FALSE, 
     test.for.symmetry = FALSE, phi) 
@@ -302,6 +309,7 @@ function (D1, D2, H1, H2, extractor, E.theta, Edash.theta, give.answers = FALSE,
         return(out)
     }
 }
+
 "V1" <-
 function (D1, other = NULL, phi) 
 {
@@ -309,6 +317,7 @@ function (D1, other = NULL, phi)
         pos.def.matrix = blockdiag(phi$omega_x, phi$omega_t))))
 
 }
+
 "V2" <-
 function (x, other = NULL, phi) 
 {
@@ -318,6 +327,7 @@ function (x, other = NULL, phi)
     return(t(phi$sigma2squared * corr.matrix(xold = x, yold = other, 
         pos.def.matrix = phi$omegastar_x)))
 }
+
 "Vd" <-
 function (D1, D2, theta, phi) 
 {
@@ -333,6 +343,7 @@ function (D1, D2, theta, phi)
     return(rbind(cbind(top.left, top.right), cbind(low.left, 
         low.right)))
 }
+
 "W" <-
 function (D1, D2, H1, H2, theta, det = FALSE, phi) 
 {
@@ -347,6 +358,7 @@ function (D1, D2, H1, H2, theta, det = FALSE, phi)
         return(solve(out))
     }
 }
+
 "W1" <-
 function (D1, H1, det = FALSE, phi) 
 {
@@ -358,6 +370,7 @@ function (D1, H1, det = FALSE, phi)
         return(solve(out))
     }
 }
+
 "W2" <-
 function (D2, H2, V, det = FALSE) 
 {
@@ -369,6 +382,7 @@ function (D2, H2, V, det = FALSE)
         return(solve(out))
     }
 }
+
 "beta1hat.fun" <-
 function (D1, H1, y, phi) 
 {
@@ -376,6 +390,7 @@ function (D1, H1, y, phi)
         solve(V1(D1 = D1, phi = phi), y)))
     return(out)
 }
+
 "beta2hat.fun" <-
 function (D1, D2, H1, H2, V = NULL, z, etahat.d2, extractor, 
     E.theta, Edash.theta, phi) 
@@ -389,6 +404,7 @@ function (D1, D2, H1, H2, V = NULL, z, etahat.d2, extractor,
         z - rho * etahat.d2)))
     return(out)
 }
+
 "betahat.fun.koh" <-
 function (D1, D2, H1, H2, theta, d, phi) 
 {
@@ -405,6 +421,7 @@ function (D1, D2, H1, H2, theta, d, phi)
         D2 = D2, H1 = H1, H2 = H2, phi = phi))
     return(out)
 }
+
 "betahat.fun.koh.vector" <-
 function (D1, D2, H1, H2, theta, d, phi) 
 {
@@ -415,6 +432,7 @@ function (D1, D2, H1, H2, theta, d, phi)
     out <- crossprod(jj.W, crossprod(jj.H, solve(jj.V, d)))
     return(out)
 }
+
 "blockdiag" <-
 function (m1, m2, p.tr = 0, p.ll = 0) 
 {
@@ -425,6 +443,7 @@ function (m1, m2, p.tr = 0, p.ll = 0)
     lowright <- m2
     rbind(cbind(topleft, topright), cbind(lowleft, lowright))
 }
+
 "computer.model" <-
 function (X, params = NULL, set.seed.to.zero = TRUE,
           draw.from.prior=FALSE, export.true.hyperparameters = FALSE, phi=NULL) 
@@ -484,6 +503,7 @@ function (X, params = NULL, set.seed.to.zero = TRUE,
     names(out) <- rownames(X)
     return(out)
 }
+
 "cov.p5.supp" <-
 function (x, xdash=NULL, theta, d, D1, D2, H1, H2, phi) 
 {
@@ -503,6 +523,7 @@ function (x, xdash=NULL, theta, d, D1, D2, H1, H2, phi)
                                      )}
   apply(theta,1,f)
 }
+
 "create.new.toy.datasets" <-
 function (D1,D2,export=FALSE)
 {
@@ -539,6 +560,7 @@ function (D1,D2,export=FALSE)
     d.toy <- c(y.toy, z.toy)
     return(list(y.toy = y.toy, z.toy = z.toy, d.toy = d.toy))
   }
+
 "dists.2frames" <-
 function (a, b = NULL, A = NULL, A.lower = NULL, test.for.symmetry = TRUE) 
 {
@@ -594,12 +616,14 @@ function (D1, D2, H1, y, E.theta, extractor, phi)
     bit2 <- crossprod(jj.tfun, solve(V1(D1, phi=phi),y - H1(D1) %*% b))
     return(drop(bit1 + bit2))
 }
+
 "extractor.toy" <-
 function (D1) 
 {
     return(list(x.star = D1[, 1:2, drop = FALSE], t.vec = D1[, 
         3:5, drop = FALSE]))
 }
+
 "h1.toy" <-
 function (x) 
 {
@@ -607,6 +631,7 @@ function (x)
     names(x)[1] <- "const"
     return(x)
 }
+
 "h2.toy" <-
 function (x) 
 {
@@ -615,6 +640,7 @@ function (x)
     names(x) <- c("constant.h2","alpha","beta")
     return(x)
 }
+
 "hh.fun" <-
 function (x.i, x.j, H1, E.theta, phi) 
 {
@@ -625,6 +651,7 @@ function (x.i, x.j, H1, E.theta, phi)
         phi = phi)
     return(out)
 }
+
 "ht.fun" <-
 function (x.i, x.j, D1, extractor, Edash.theta, H1, fast.but.opaque = TRUE, 
     x.star = NULL, t.vec = NULL, phi) 
@@ -671,11 +698,13 @@ function (x.i, x.j, D1, extractor, Edash.theta, H1, fast.but.opaque = TRUE,
     colnames(out) <- rownames(t.vec)
     return(t(out))
 }
+
 "is.positive.definite" <-
 function (a, ...) 
 {
     all(eigen(a, only.values = TRUE, ...)$values > 0)
 }
+
 "p.eqn4.supp" <-
 function (D1, y, H1, include.prior = TRUE, lognormally.distributed, 
     return.log = FALSE, phi) 
@@ -704,6 +733,7 @@ function (D1, y, H1, include.prior = TRUE, lognormally.distributed,
         }
     }
 }
+
 "p.eqn8.supp" <-
 function (theta, D1, D2, H1, H2, d, include.prior = FALSE, lognormally.distributed = FALSE, 
     return.log = FALSE, phi) 
@@ -723,6 +753,7 @@ function (theta, D1, D2, H1, H2, d, include.prior = FALSE, lognormally.distribut
     out <- apply(theta, 1, f)
     return(out)
 }
+
 "p.eqn8.supp.vector" <-
 function (theta, D1, D2, H1, H2, d, include.prior = FALSE, lognormally.distributed = FALSE, 
     return.log = FALSE, phi) 
@@ -751,6 +782,7 @@ function (theta, D1, D2, H1, H2, d, include.prior = FALSE, lognormally.distribut
     }
     return(as.vector(out))
 }
+
 "p.page4" <-
 function (D1, D2, H1, H2, V, y, z, E.theta, Edash.theta, extractor, include.prior = FALSE, 
     lognormally.distributed = FALSE, return.log = FALSE, phi) 
@@ -789,6 +821,7 @@ function (D1, D2, H1, H2, V, y, z, E.theta, Edash.theta, extractor, include.prio
         }
     }
 }
+
 "phi.change" <-
 function (phi.fun, old.phi = NULL, rho = NULL, lambda = NULL, 
     psi1 = NULL, psi1.apriori = NULL, psi1.apriori.mean = NULL, 
@@ -875,6 +908,7 @@ function (phi.fun, old.phi = NULL, rho = NULL, lambda = NULL,
     return(phi.fun(rho = rho, lambda = lambda, psi1 = psi1, psi1.apriori = psi1.apriori, 
         psi2 = psi2, psi2.apriori = psi2.apriori, theta.apriori = theta.apriori))
 }
+
 "phi.fun.toy" <-
 function (rho, lambda, psi1, psi1.apriori, psi2, psi2.apriori, 
     theta.apriori) 
@@ -927,6 +961,7 @@ function (rho, lambda, psi1, psi1.apriori, psi2, psi2.apriori,
         omega_t.lower = jj.omega_t.lower, a = jj.a, b = jj.b, 
         c = jj.c, A = jj.A, A.upper = jj.A.upper, A.lower = jj.A.lower)
 }
+
 "phi.true.toy" <-
 function (phi) 
 {
@@ -936,6 +971,7 @@ function (phi)
         lambda = re$REAL.LAMBDA, psi1 = c(co$REAL.SCALES, co$REAL.SIGMA1SQUARED), 
         psi2 = c(re$REAL.ROUGHNESS, re$REAL.SIGMA2SQUARED))
 }
+
 "prob.psi1" <-
 function (phi, lognormally.distributed = TRUE) 
 {
@@ -951,6 +987,7 @@ function (phi, lognormally.distributed = TRUE)
             sigma = phi$psi1.apriori$sigma))
     }
 }
+
 "prob.psi2" <-
 function (phi, lognormally.distributed = TRUE) 
 {
@@ -966,6 +1003,7 @@ function (phi, lognormally.distributed = TRUE)
             mean = phi$psi2.apriori$mean, sigma = phi$psi2.apriori$sigma))
     }
 }
+
 "prob.theta" <-
 function (theta, phi, lognormally.distributed = FALSE) 
 {
@@ -981,6 +1019,7 @@ function (theta, phi, lognormally.distributed = FALSE)
             sigma = phi$theta.aprior$sigma))
     }
 }
+
 "model.inadequacy" <-
 function (X, set.seed.to.zero = TRUE, draw.from.prior=FALSE,
     export.true.hyperparameters = FALSE, phi=NULL) 
@@ -1024,6 +1063,7 @@ function (X, set.seed.to.zero = TRUE, draw.from.prior=FALSE,
                        ))
       return(out)
 }
+
 "sample.theta" <-
 function (n = 1, phi) 
 {
@@ -1031,6 +1071,7 @@ function (n = 1, phi)
     colnames(out) <- names(phi$theta.apriori$mean)
     return(out)
 }
+
 "stage1" <-
 function (D1, y, H1, maxit, trace=100, method = "Nelder-Mead", directory = ".",
           do.filewrite=FALSE, do.print=TRUE,
@@ -1183,11 +1224,13 @@ function (D1, D2, H1, H2, d, maxit, trace=100, method = "Nelder-Mead", directory
     names(optimal.theta) <- names(phi$theta.apriori$mean)
     return(optimal.theta)
 }
+
 "symmetrize" <-
 function (a) 
 {
     a + t(a) - diag(diag(a))
 }
+
 "t.fun" <-
 function (x, D1, extractor, phi) 
 {
@@ -1213,6 +1256,7 @@ function (x, D1, extractor, phi)
     names(out) <- rownames(t.vec)
     return(out)
 }
+
 "tee" <-
 function (x, theta, D1, D2, phi) 
 {
@@ -1231,7 +1275,6 @@ function (x, theta, D1, D2, phi)
     out <- t(cbind(bit1, bit2a + bit2b))
     return(out)
 }
-
 
 "tt.fun" <-
 function (D1, extractor, x.i, x.j, test.for.symmetry = FALSE, 
@@ -1291,27 +1334,12 @@ function (D1, extractor, x.i, x.j, test.for.symmetry = FALSE,
     return(out)
 }
 
-"EK.eqn10.supp" <- function(X.dist, D1, D2, H1, H2, d, hbar.fun,
-  lower.theta, upper.theta, extractor, give.info=FALSE, include.prior=FALSE, phi, ...){
-
-
-  if(!exists("adapt")){
-    adapt <- function(...){stop("not the original adapt")}
-    stop("the adapt package is no longer available on CRAN: so
-          the adapt() function, which is needed for calculate_B(),
-          is not available either.
-
-  You may be able to install the adapt package notwithstanding its
-  availability on CRAN or is license.  If you are happy with this (I
-  am), everything should work.
-
-I am working on providing a replacement for adapt(), but this  is
-low on my list of priorities.  Sorry about this.")
-
-  }      
-
-
-  
+"EK.eqn10.supp" <-
+function(X.dist, D1, D2, H1, H2, d, hbar.fun,
+  lower.theta, upper.theta, extractor, give.info=FALSE,
+         include.prior=FALSE, phi, ...)
+{
+ 
   scalar1 <-
     phi$sigma1squared/sqrt(det(diag(nrow=nrow(phi$omega_x)) +
                                        2*X.dist$var %*% phi$omega_x))
@@ -1421,12 +1449,13 @@ low on my list of priorities.  Sorry about this.")
 "MH" <- function(n, start, sigma, pi){
   out <- matrix(NA,n,length(start))
   out[1,] <- start
-  
+  den <- NA  
   for(i in 2:n){  
     proposed <- drop(out[i-1,] + rmvnorm(n=1,sigma=sigma))
     num <- pi(proposed)
-    den <- pi(out[i-1,])
-
+    if(is.na(den)){
+       den <- pi(out[i-1,])
+    }
     if( (num==0) & (den==0)){
       print("this cannot happen")
       alpha <- 0
@@ -1434,9 +1463,10 @@ low on my list of priorities.  Sorry about this.")
       alpha <- min(1, num/den)
     }
     if(runif(1)<alpha){
-      out[i,] <- proposed
+      out[i,] <- proposed   # proposal accepted
+      den <- NA             # will have to calculate 'den' at new proposal value
     } else {
-      out[i,] <- out[i-1,]
+      out[i,] <- out[i-1,]  # proposal rejected; use 'den' again
     }
   }
   return(out)

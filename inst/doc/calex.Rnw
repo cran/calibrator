@@ -83,10 +83,11 @@ functions have a {\tt .int} suffix, representing ``intermediate''.
 
 This document is not a substitute for~\cite{kennedy2001a}
 or~\cite{kennedy2001b} or~\cite{hankin2005} or the online help files
-in \pkg{calibrator}.  It is not intended to stand alone: for example, the
-notation used here is that of~\cite{kennedy2001a,kennedy2001b}, and
-the user is expected to consult the online help in the \pkg{calibrator}
-package when appropriate.
+in \pkg{calibrator}.  It is not intended to stand alone: for example,
+the notation used here is that of~\cite{kennedy2001a,kennedy2001b},
+and the user should consult the online help in the \pkg{calibrator}
+package when appropriate.  Here, ``online'' means ``The Rd files in an
+R package''.
 
 
 This document is primarily didactic, although it is informal.

@@ -18,7 +18,8 @@ Society B, 63(3) pp425-464
 
 M. C. Kennedy and A. O'Hagan 2001.  \dQuote{Supplementary details on
 Bayesian calibration of computer models}, Internal report, University
-of Sheffield.  Available at \url{http://www.shef.ac.uk/~st1ao/ps/calsup.ps}
+    of Sheffield.  Available at
+    \url{http://www.tonyohagan.co.uk/academic/ps/calsup.ps}
 
 R. K. S. Hankin 2005. \dQuote{Introducing BACCO, an R bundle for
 Bayesian analysis of computer code output}, Journal of Statistical
